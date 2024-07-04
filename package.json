@@ -1,0 +1,23 @@
+{
+  "name": "crm",
+  "version": "1.0.0",
+  "description": "server side for crm application",
+  "main": "index.js",
+  "scripts": {
+    "start":"nodemon ./index/js"
+  },
+  "keywords": [
+    "NODE",
+    "REST",
+    "API",
+    "MONGO"
+  ],
+  "author": "Eivar Ulises Cuevas Tellez",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
