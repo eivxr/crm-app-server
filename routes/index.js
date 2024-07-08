@@ -4,6 +4,7 @@ const router = express.Router();
 //controllers
 const clienteController = require("../controllers/clienteController.js");
 const productoController = require("../controllers/productoController.js");
+const pedidoController = require("../controllers/pedidoController.js");
 
 //CLIENTE------
 
@@ -47,6 +48,19 @@ router.put(
 
 //eliminar producto
 router.delete("/productos/:idProducto", productoController.eliminarProducto);
+
+//PEDIDOS-------
+
+//crear un nuevo pedido
+router.post("/pedidos", pedidoController.crearPedido);
+//mostrar todos los pedidos
+router.get("/pedidos", pedidoController.mostrarPedidos);
+//mostrar pedido
+router.get("/pedidos/:idPedido", pedidoController.mostrarPedido);
+//actualizar pedido
+router.put("/pedidos/:idPedido", pedidoController.actualizarPedido);
+//eliminar pedido
+router.delete("/pedidos/:idPedido", pedidoController.eliminarPedido);
 
 module.exports = function () {
   return router;
