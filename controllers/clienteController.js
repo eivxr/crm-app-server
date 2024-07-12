@@ -43,7 +43,7 @@ exports.actualizarCliente = async (req, res, next) => {
 
     res.json(cliente);
   } catch (error) {
-    console.log(`Error al actualizar el cliente: ${error}`);
+    res.send(error);
     return next();
   }
 };
@@ -54,7 +54,7 @@ exports.eliminarCliente = async (req, res, next) => {
     await Cliente.findByIdAndDelete({ _id: req.params.idCliente });
     res.json({ mensaje: "Cliente eliminado correctanente" });
   } catch (error) {
-    console.log(`Error al eliminar el cliente: ${error}`);
+    res.send(error);
     next();
   }
 };
