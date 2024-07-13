@@ -17,7 +17,7 @@ exports.obtenerClientes = async (req, res, next) => {
     const clientes = await Cliente.find();
     res.json(clientes);
   } catch (error) {
-    console.log(`Error al mostrar los clientes: ${error}`);
+    res.send(error)
     next();
   }
 };

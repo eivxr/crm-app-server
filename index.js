@@ -4,9 +4,9 @@ const express = require("express");
 const routes = require("./routes/index.js");
 const connection = require("./config/db.js");
 
-const bodyParser = require("body-parser");
+const path = require("path");
 
-const cors = require('cors');
+const cors = require("cors");
 
 const PORT = process.env.PORT || 5000;
 
@@ -25,6 +25,9 @@ app.use(cors());
 
 //app routes
 app.use("/", routes());
+
+//carpeta publica
+app.use("/uploads", express.static("uploads"));
 
 //puerto del servidor
 app.listen(PORT, () => {
