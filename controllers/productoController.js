@@ -119,20 +119,32 @@ exports.actualizarProducto = async (req, res, next) => {
 //eliminar un producto
 exports.eliminarProducto = async (req, res, next) => {
   try {
-    const producto = await Producto.findOneAndDelete({ _id:req.params.idProducto });
+    const producto = await Producto.findOneAndDelete({
+      _id: req.params.idProducto,
+    });
 
-    if(producto.image){
-        const imagenAnterioPath = __dirname + `/../uploads/${producto.image}`;
-        // Eliminar archivo con filesystem
-        unlink( imagenAnterioPath, (error) => {
-            if(error) {
-                console.log(error);
-            }
-            return;
-        });
+    if (producto.image) {
+      const imagenAnterioPath = __dirname + `/../uploads/${producto.image}`;
+      // Eliminar archivo con filesystem
+      unlink(imagenAnterioPath, (error) => {
+        if (error) {
+          console.log(error);
+        }
+        return;
+      });
     }
-    res.json({ producto, mensaje:'Producto Eliminado'});
+    res.json({ producto, mensaje: "Producto Eliminado" });
   } catch (error) {
     console.log(`error al eliminar producto: ${error}`);
+  }
+};
+
+exports.buscarProducto = async (req, res, next) => {
+  try {
+    const { query } = req.params;
+    const producto = await Producto.find({ nombre: new RegExp(query, "i") });
+    res.status(200).json(producto);
+  } catch (error) {
+    res.status(404).send(error);
   }
 };

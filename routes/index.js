@@ -49,6 +49,9 @@ router.put(
 //eliminar producto
 router.delete("/productos/:idProducto", productoController.eliminarProducto);
 
+//buscar un producto por texto
+router.post("/productos/busqueda/:query", productoController.buscarProducto);
+
 //PEDIDOS-------
 
 //crear un nuevo pedido
