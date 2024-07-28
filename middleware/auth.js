@@ -12,7 +12,7 @@ module.exports = (req, res, next) => {
   }
 
   //   en caso de que haya jwt lo extraemos y comprobamos
-  const token = authHeader.split(" ")[1]; //bearer {jwt} por eso el split
+  const token = authHeader && authHeader.split(" ")[1]; //bearer {jwt} por eso el split
   let verificar;
   try {
     verificar = jwt.verify(token, "secreta");
@@ -26,4 +26,6 @@ module.exports = (req, res, next) => {
     error.statusCode = 401;
     throw error;
   }
+
+  next();
 };
