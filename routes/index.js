@@ -7,13 +7,14 @@ const productoController = require("../controllers/productoController.js");
 const pedidoController = require("../controllers/pedidoController.js");
 const usuarioController = require("../controllers/usuarioController.js");
 
+const auth = require("../middleware/auth.js");
 //CLIENTE------
 
 //crear nuevo cliente (post)
-router.post("/clientes", clienteController.crearCliente);
+router.post("/clientes",auth, clienteController.crearCliente);
 
 //mostrar clientes
-router.get("/clientes", clienteController.obtenerClientes);
+router.get("/clientes",auth, clienteController.obtenerClientes);
 
 //mostrar un cliente por id
 router.get("/clientes/:idCliente", clienteController.obtenerCliente);
